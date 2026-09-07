@@ -133,3 +133,4 @@ document.addEventListener('DOMContentLoaded', () => {
     initLogin();
 });
 console.log('GasConnect App iniciada correctamente.');
+window.addEventListener('beforeunload', () => {});
