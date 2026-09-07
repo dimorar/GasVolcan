@@ -81,3 +81,13 @@ function initContactValidation() {
         form.reset();
     });
 }
+function initLogin() {
+    const form = document.getElementById('login-form');
+    if (!form) return;
+
+    form.addEventListener('submit', (e) => {
+        e.preventDefault();
+        document.getElementById('login-section').classList.add('hidden');
+        document.getElementById('admin-panel').classList.remove('hidden');
+    });
+}
