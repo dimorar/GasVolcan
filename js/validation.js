@@ -12,3 +12,7 @@ function validarRut(rut) {
     if (dvEsperado === 10) dvEsperado = 'K';
     return dv.toString() === dvEsperado.toString();
 }
+function validarCorreo(email) {
+    const dominiosPermitidos = ['@duoc.cl', '@profesor.duoc.cl', '@gmail.com'];
+    return dominiosPermitidos.some(dominio => email.endsWith(dominio));
+}
