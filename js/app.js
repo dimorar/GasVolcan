@@ -132,3 +132,4 @@ document.addEventListener('DOMContentLoaded', () => {
     initContactValidation();
     initLogin();
 });
+console.log('GasConnect App iniciada correctamente.');
