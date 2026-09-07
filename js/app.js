@@ -117,3 +117,9 @@ function updateStock(productId, newStock) {
     localStorage.setItem('products', JSON.stringify(products));
     renderAdminTable();
 }
+function checkRoleAccess(userRole) {
+    const adminNav = document.getElementById('nav-admin');
+    if (adminNav && userRole !== 'Admin') {
+        adminNav.classList.add('hidden');
+    }
+}
