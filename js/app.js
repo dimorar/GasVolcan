@@ -71,3 +71,13 @@ function initRegisterValidation() {
         alert('Registro exitoso.');
     });
 }
+function initContactValidation() {
+    const form = document.getElementById('contact-form');
+    if (!form) return;
+
+    form.addEventListener('submit', (e) => {
+        e.preventDefault();
+        alert('Mensaje enviado con éxito. Nos pondremos en contacto pronto.');
+        form.reset();
+    });
+}
