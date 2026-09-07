@@ -242,3 +242,9 @@ function modificarCantidad(id, cambio) {
     localStorage.setItem('cart', JSON.stringify(carrito));
     actualizarCarrito();
 }
+function eliminarDelCarrito(id) {
+    let carrito = JSON.parse(localStorage.getItem('cart')) || [];
+    carrito = carrito.filter(item => item !== id);
+    localStorage.setItem('cart', JSON.stringify(carrito));
+    actualizarCarrito();
+}
