@@ -51,3 +51,23 @@ function cargarComunas() {
         selectComuna.innerHTML += `<option value="${c}">${c}</option>`;
     });
 }
+function initRegisterValidation() {
+    const form = document.getElementById('register-form');
+    if (!form) return;
+
+    form.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const rut = document.getElementById('reg-rut').value;
+        const email = document.getElementById('reg-email').value;
+
+        if (!validarRut(rut)) {
+            alert('RUN inválido. Verifique el formato.');
+            return;
+        }
+        if (!validarCorreo(email)) {
+            alert('Correo debe pertenecer a @duoc.cl, @profesor.duoc.cl o @gmail.com');
+            return;
+        }
+        alert('Registro exitoso.');
+    });
+}
