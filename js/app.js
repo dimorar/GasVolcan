@@ -41,3 +41,13 @@ function updateCartCount() {
     if (countEl) countEl.innerText = cart.length;
     calculateTotal();
 }
+function cargarComunas() {
+    const selectComuna = document.getElementById('reg-comuna');
+    if (!selectComuna) return;
+
+    const comunas = ['Macul', 'Santiago', 'Providencia', 'La Florida', 'Peñalolén'];
+    selectComuna.innerHTML = '<option value="">Seleccione Comuna</option>';
+    comunas.forEach(c => {
+        selectComuna.innerHTML += `<option value="${c}">${c}</option>`;
+    });
+}
