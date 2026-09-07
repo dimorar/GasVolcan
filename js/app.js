@@ -195,8 +195,6 @@ function actualizarCarrito() {
     }
 
     if (!tabla) return;
-
-    // Contar duplicados
     const resumen = {};
     carrito.forEach(id => resumen[id] = (resumen[id] || 0) + 1);
 
@@ -248,3 +246,71 @@ function eliminarDelCarrito(id) {
     localStorage.setItem('cart', JSON.stringify(carrito));
     actualizarCarrito();
 }
+function renderUsuariosAdmin() {
+    const tabla = document.getElementById('admin-user-list');
+    if (!tabla) return;
+
+    const usuarios = JSON.parse(localStorage.getItem('users')) || [];
+    tabla.innerHTML = usuarios.map(u => `
+        <tr>
+            <td>${u.rut}</td>
+            <td>${u.nombre}</td>
+            <td>${u.email}</td>
+            <td>
+                <button onclick="cargarUsuarioForm('${u.id}')">Editar</button>
+                <button onclick="eliminarUsuario('${u.id}')">Eliminar</button>
+            </td>
+        </tr>
+    `).join('');
+}
+
+function eliminarUsuario(id) {
+    let usuarios = JSON.parse(localStorage.getItem('users')) || [];
+    usuarios = usuarios.filter(u => String(u.id) !== String(id));
+    localStorage.setItem('users', JSON.stringify(usuarios));
+    renderUsuariosAdmin();
+}
+
+function cargarUsuarioForm(id) {
+    const usuarios = JSON.parse(localStorage.getItem('users')) || [];
+    const u = usuarios.find(user => String(user.id) === String(id));
+    if (!u) return;
+
+    document.getElementById('edit-id').value = u.id;
+    document.getElementById('reg-rut').value = u.rut;
+    document.getElementById('reg-nombre').value = u.nombre;
+    document.getElementById('reg-email').value = u.email;
+    document.getElementById('btn-guardar-user').innerText = 'Actualizar Usuario';
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+    renderProductos();
+    actualizarCarrito();
+    renderUsuariosAdmin();
+
+    const formUser = document.getElementById('register-form');
+    if (formUser) {
+        formUser.addEventListener('submit', (e) => {
+            e.preventDefault();
+            let usuarios = JSON.parse(localStorage.getItem('users')) || [];
+            const idEdit = document.getElementById('edit-id')?.value;
+            const rut = document.getElementById('reg-rut').value;
+            const nombre = document.getElementById('reg-nombre').value;
+            const email = document.getElementById('reg-email').value;
+
+            if (idEdit) {
+                usuarios = usuarios.map(u => String(u.id) === String(idEdit) ? { id: u.id, rut, nombre, email } : u);
+                alert('Usuario actualizado con éxito');
+            } else {
+                usuarios.push({ id: Date.now(), rut, nombre, email });
+                alert('Usuario creado con éxito');
+            }
+
+            localStorage.setItem('users', JSON.stringify(usuarios));
+            formUser.reset();
+            if (document.getElementById('edit-id')) document.getElementById('edit-id').value = '';
+            if (document.getElementById('btn-guardar-user')) document.getElementById('btn-guardar-user').innerText = 'Crear Usuario';
+            renderUsuariosAdmin();
+        });
+    }
+});
