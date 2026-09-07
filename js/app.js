@@ -22,3 +22,16 @@ function addToCart(productId) {
     localStorage.setItem('cart', JSON.stringify(cart));
     updateCartCount();
 }
+function calculateTotal() {
+    const cart = JSON.parse(localStorage.getItem('cart')) || [];
+    const products = JSON.parse(localStorage.getItem('products')) || [];
+    let total = 0;
+
+    cart.forEach(id => {
+        const prod = products.find(p => p.id === id);
+        if (prod) total += prod.price;
+    });
+
+    const totalEl = document.getElementById('cart-total');
+    if (totalEl) totalEl.innerText = total.toLocaleString('es-CL');
+}
