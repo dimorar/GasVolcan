@@ -91,3 +91,23 @@ function initLogin() {
         document.getElementById('admin-panel').classList.remove('hidden');
     });
 }
+function renderAdminTable() {
+    const tbody = document.getElementById('admin-product-list');
+    if (!tbody) return;
+
+    const products = JSON.parse(localStorage.getItem('products')) || [];
+    tbody.innerHTML = '';
+
+    products.forEach(p => {
+        const isCritical = p.stock <= p.stockCritico;
+        tbody.innerHTML += `
+            <tr class="${isCritical ? 'stock-critical' : ''}">
+                <td>${p.id}</td>
+                <td>${p.name}</td>
+                <td>$${p.price.toLocaleString('es-CL')}</td>
+                <td>${p.stock}</td>
+                <td>${isCritical ? '⚠️ CRÍTICO' : 'OK'}</td>
+            </tr>
+        `;
+    });
+}
