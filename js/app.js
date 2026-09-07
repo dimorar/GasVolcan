@@ -111,3 +111,9 @@ function renderAdminTable() {
         `;
     });
 }
+function updateStock(productId, newStock) {
+    let products = JSON.parse(localStorage.getItem('products')) || [];
+    products = products.map(p => p.id === productId ? { ...p, stock: newStock } : p);
+    localStorage.setItem('products', JSON.stringify(products));
+    renderAdminTable();
+}
