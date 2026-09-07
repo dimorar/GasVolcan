@@ -134,3 +134,53 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 console.log('GasVolcan App iniciada correctamente.');
 window.addEventListener('beforeunload', () => {});
+if (!localStorage.getItem('products')) {
+    localStorage.setItem('products', JSON.stringify([
+        { id: 'G-05', name: 'Gas 5Kg', price: 10500, stock: 15, img: 'https://via.placeholder.com/150/004b87/ffffff?text=Gas+5Kg' },
+        { id: 'G-11', name: 'Gas 11Kg', price: 16800, stock: 3, img: 'https://via.placeholder.com/150/004b87/ffffff?text=Gas+11Kg' },
+        { id: 'G-15', name: 'Gas 15Kg', price: 21500, stock: 20, img: 'https://via.placeholder.com/150/004b87/ffffff?text=Gas+15Kg' },
+        { id: 'G-45', name: 'Gas 45Kg', price: 62000, stock: 2, img: 'https://via.placeholder.com/150/004b87/ffffff?text=Gas+45Kg' }
+    ]));
+}
+if (!localStorage.getItem('users')) {
+    localStorage.setItem('users', JSON.stringify([
+        { id: 1, rut: '12345678-K', nombre: 'Admin Sistema', email: 'admin@duoc.cl' }
+    ]));
+}
+function renderProductos() {
+    const contenedor = document.getElementById('product-list');
+    if (!contenedor) return;
+    const productos = JSON.parse(localStorage.getItem('products')) || [];
+
+    contenedor.innerHTML = productos.map(p => `
+        <div class="product-card" style="border:1px solid #ccc; padding:10px; margin:10px; text-align:center;">
+            <img src="${p.img}" alt="${p.name}" style="width:120px; height:auto;">
+            <h3>${p.name}</h3>
+            <p>Precio: $${p.price.toLocaleString('es-CL')} | <strong>Stock: ${p.stock}</strong></p>
+            <input type="number" id="cant-${p.id}" value="1" min="1" max="${p.stock}" style="width:50px;">
+            <button onclick="agregarAlCarrito('${p.id}')" ${p.stock === 0 ? 'disabled' : ''}>
+                ${p.stock === 0 ? 'Agotado' : 'Agregar al Carrito'}
+            </button>
+        </div>
+    `).join('');
+}
+function agregarAlCarrito(id) {
+    const productos = JSON.parse(localStorage.getItem('products')) || [];
+    let carrito = JSON.parse(localStorage.getItem('cart')) || [];
+    const prod = productos.find(p => p.id === id);
+    const cantidadDeseada = parseInt(document.getElementById(`cant-${id}`).value) || 1;
+
+    const enCarrito = carrito.filter(item => item === id).length;
+
+    if (enCarrito + cantidadDeseada > prod.stock) {
+        alert(`No puedes agregar más. El límite en stock es de ${prod.stock} unidades.`);
+        return;
+    }
+
+    for (let i = 0; i < cantidadDeseada; i++) {
+        carrito.push(id);
+    }
+
+    localStorage.setItem('cart', JSON.stringify(carrito));
+    actualizarCarrito();
+}
