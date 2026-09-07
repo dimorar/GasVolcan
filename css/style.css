@@ -26,3 +26,19 @@ body {
 .hidden {
     display: none !important;
 }
+
+
+.main-header {
+    background: var(--primary);
+    color: white;
+    padding: 1rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.nav-menu a {
+    color: white;
+    text-decoration: none;
+    margin-left: 1rem;
+}
