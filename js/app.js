@@ -184,3 +184,61 @@ function agregarAlCarrito(id) {
     localStorage.setItem('cart', JSON.stringify(carrito));
     actualizarCarrito();
 }
+function actualizarCarrito() {
+    const carrito = JSON.parse(localStorage.getItem('cart')) || [];
+    const productos = JSON.parse(localStorage.getItem('products')) || [];
+    const tabla = document.getElementById('cart-items-body');
+    const totalEl = document.getElementById('cart-total');
+
+    if (document.getElementById('cart-count')) {
+        document.getElementById('cart-count').innerText = carrito.length;
+    }
+
+    if (!tabla) return;
+
+    // Contar duplicados
+    const resumen = {};
+    carrito.forEach(id => resumen[id] = (resumen[id] || 0) + 1);
+
+    let total = 0;
+    tabla.innerHTML = Object.keys(resumen).map(id => {
+        const p = productos.find(item => item.id === id);
+        const cant = resumen[id];
+        const subtotal = p.price * cant;
+        total += subtotal;
+
+        return `
+            <tr>
+                <td>${p.name}</td>
+                <td>$${p.price.toLocaleString('es-CL')}</td>
+                <td>
+                    <button onclick="modificarCantidad('${id}', -1)">-</button>
+                    ${cant}
+                    <button onclick="modificarCantidad('${id}', 1)">+</button>
+                </td>
+                <td>$${subtotal.toLocaleString('es-CL')}</td>
+                <td><button onclick="eliminarDelCarrito('${id}')">Quitar</button></td>
+            </tr>
+        `;
+    }).join('');
+
+    if (totalEl) totalEl.innerText = total.toLocaleString('es-CL');
+}
+function modificarCantidad(id, cambio) {
+    let carrito = JSON.parse(localStorage.getItem('cart')) || [];
+    const prod = JSON.parse(localStorage.getItem('products')).find(p => p.id === id);
+
+    if (cambio === 1) {
+        const enCarrito = carrito.filter(item => item === id).length;
+        if (enCarrito + 1 > prod.stock) {
+            alert(`Alcanzaste el tope máximo de stock (${prod.stock})`);
+            return;
+        }
+        carrito.push(id);
+    } else {
+        const index = carrito.indexOf(id);
+        if (index !== -1) carrito.splice(index, 1);
+    }
+    localStorage.setItem('cart', JSON.stringify(carrito));
+    actualizarCarrito();
+}
