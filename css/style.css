@@ -116,3 +116,20 @@ form input, form select, form textarea {
     margin-bottom: 1rem;
     padding: 8px;
 }
+.admin-table {
+    width: 100%;
+    border-collapse: collapse;
+    background: white;
+    margin-top: 1rem;
+}
+
+.admin-table th, .admin-table td {
+    border: 1px solid #ccc;
+    padding: 8px;
+    text-align: left;
+}
+
+.stock-critical {
+    background-color: var(--danger-bg);
+    font-weight: bold;
+}
