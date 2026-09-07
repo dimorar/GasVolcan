@@ -35,3 +35,9 @@ function calculateTotal() {
     const totalEl = document.getElementById('cart-total');
     if (totalEl) totalEl.innerText = total.toLocaleString('es-CL');
 }
+function updateCartCount() {
+    const cart = JSON.parse(localStorage.getItem('cart')) || [];
+    const countEl = document.getElementById('cart-count');
+    if (countEl) countEl.innerText = cart.length;
+    calculateTotal();
+}
