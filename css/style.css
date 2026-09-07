@@ -98,3 +98,21 @@ footer {
     box-shadow: 0 2px 4px rgba(0,0,0,0.1);
     text-align: center;
 }
+.split-view {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.5rem;
+}
+
+.form-box {
+    background: white;
+    padding: 1.5rem;
+    border-radius: 6px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+form input, form select, form textarea {
+    width: 100%;
+    margin-bottom: 1rem;
+    padding: 8px;
+}
