@@ -133,3 +133,8 @@ form input, form select, form textarea {
     background-color: var(--danger-bg);
     font-weight: bold;
 }
+@media (max-width: 600px) {
+    .main-header { flex-direction: column; text-align: center; }
+    .nav-menu { margin-top: 0.5rem; }
+    .nav-menu a { display: inline-block; margin: 0.2rem; }
+}
