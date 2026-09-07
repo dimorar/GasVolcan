@@ -132,5 +132,5 @@ document.addEventListener('DOMContentLoaded', () => {
     initContactValidation();
     initLogin();
 });
-console.log('GasConnect App iniciada correctamente.');
+console.log('GasVolcan App iniciada correctamente.');
 window.addEventListener('beforeunload', () => {});
