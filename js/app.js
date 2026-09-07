@@ -123,3 +123,12 @@ function checkRoleAccess(userRole) {
         adminNav.classList.add('hidden');
     }
 }
+document.addEventListener('DOMContentLoaded', () => {
+    renderCatalog();
+    renderAdminTable();
+    updateCartCount();
+    cargarComunas();
+    initRegisterValidation();
+    initContactValidation();
+    initLogin();
+});
