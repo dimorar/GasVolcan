@@ -15,3 +15,10 @@ function renderCatalog() {
         `;
     });
 }
+
+function addToCart(productId) {
+    let cart = JSON.parse(localStorage.getItem('cart')) || [];
+    cart.push(productId);
+    localStorage.setItem('cart', JSON.stringify(cart));
+    updateCartCount();
+}
