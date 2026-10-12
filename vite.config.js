@@ -28,3 +28,7 @@ export default defineConfig({
     },
   },
 })
+export default defineConfig({
+  plugins: [react()],
+  base: '/GasVolcan/',
+})
