@@ -23,9 +23,6 @@ Proyecto semestral de Desarrollo Web Fullstack (DSY1104), construido con **Vite 
 - **Menú responsive** con botón ☰ en pantallas chicas.
 
 Usuario administrador de prueba: `admin@duoc.cl` / `admin123` (entra en **Iniciar sesión**)
-(⚠️ solo para la demo: no hay backend, los datos viven en `localStorage`).
-
-> 📘 ¿Quieres construir el proyecto desde cero? Sigue la [guía paso a paso](GUIA_INSTALACION.md).
 
 ## Ejecutar
 
