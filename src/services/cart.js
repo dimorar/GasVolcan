@@ -1,5 +1,4 @@
 
-
 export function agregarAlCarrito(cart, producto, cantidad = 1) {
   const cant = Number(cantidad)
   if (!Number.isInteger(cant) || cant < 1) {

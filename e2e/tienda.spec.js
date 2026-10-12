@@ -26,7 +26,6 @@ test('busca productos en el catálogo', async ({ page }) => {
 })
 
 test('compra completa: registro, pedido y despacho por el administrador', async ({ page }) => {
-  
   await page.goto('./#/contacto')
   const registro = page.getByRole('form', { name: 'Formulario: Registrarse' })
   await registro.getByLabel('RUN').fill('11.111.111-1')

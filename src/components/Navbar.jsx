@@ -18,7 +18,10 @@ export default function Navbar() {
 
   return (
     <header className="main-header">
-      <Link to="/" className="logo" onClick={cerrar}>GasVolcan</Link>
+      <Link to="/" className="logo" onClick={cerrar}>
+        <img src="favicon.svg" alt="" />
+        GasVolcan
+      </Link>
       <button
         className="menu-toggle"
         aria-label="Menú"

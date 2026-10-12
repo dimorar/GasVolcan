@@ -16,7 +16,6 @@ test('el menú navega entre páginas usando HashRouter', async ({ page }) => {
 
   await menu.getByRole('link', { name: 'Contacto/Registro' }).click()
   await expect(page).toHaveURL(/#\/contacto$/)
-  
   await expect(page.getByRole('option', { name: 'Región Metropolitana' })).toBeAttached()
 
   await menu.getByRole('link', { name: 'Iniciar sesión' }).click()

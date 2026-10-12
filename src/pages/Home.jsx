@@ -14,10 +14,13 @@ const PASOS = [
 export default function Home() {
   return (
     <>
-      <section className="hero">
-        <h1>Tu carga de gas a un click</h1>
-        <p>Reparto rápido y seguro directo a tu hogar.</p>
-        <Link to="/catalogo" className="btn">Ver productos</Link>
+      <section className="hero hero--volcan">
+        <div className="hero__texto">
+          <h1>Tu carga de gas a un click</h1>
+          <p>Reparto rápido y seguro directo a tu hogar.</p>
+          <Link to="/catalogo" className="btn">Ver productos</Link>
+        </div>
+        <img className="hero__imagen" src="img/hero-volcan.svg" alt="" />
       </section>
       <section className="pasos" aria-labelledby="titulo-pasos">
         <h2 id="titulo-pasos">¿Cómo comprar?</h2>

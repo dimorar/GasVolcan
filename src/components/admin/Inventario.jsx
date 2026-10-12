@@ -56,7 +56,6 @@ export default function Inventario() {
           </thead>
           <tbody>
             {productos.map((p) => (
-              
               <FilaProducto key={`${p.id}-${p.stock}`} producto={p} onGuardarStock={guardarStock} />
             ))}
           </tbody>

@@ -1,5 +1,4 @@
 
-
 export function limpiarRut(rut = '') {
   return String(rut).replace(/[.\-\s]/g, '').toUpperCase()
 }

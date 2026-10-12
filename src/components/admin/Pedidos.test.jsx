@@ -33,7 +33,7 @@ describe('Gestión de pedidos', () => {
     await user.selectOptions(seccion().getByLabelText('Filtrar por estado'), 'Cancelado')
     expect(seccion().getByText('No hay pedidos en estado Cancelado.')).toBeInTheDocument()
     await user.selectOptions(seccion().getByLabelText('Filtrar por estado'), 'Pendiente')
-    expect(seccion().getAllByRole('row')).toHaveLength(2) 
+    expect(seccion().getAllByRole('row')).toHaveLength(2)
 
     await user.selectOptions(seccion().getByLabelText('Estado del pedido P-0001'), 'En reparto')
     expect(seccion().getByRole('alert')).toHaveTextContent('Pedido P-0001 cambiado a "En reparto".')

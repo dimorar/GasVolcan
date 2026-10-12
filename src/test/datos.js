@@ -1,4 +1,3 @@
-
 export const ADMIN = { id: 1, nombre: 'Admin Sistema', rol: 'Admin' }
 
 export const CLIENTE = {

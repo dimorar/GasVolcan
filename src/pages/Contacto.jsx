@@ -20,7 +20,7 @@ export default function Contacto() {
     if (Object.keys(errores).length > 0) return
     setUsuarios(guardarUsuario(usuarios, datos))
     setOkReg(true)
-    setFormKey((k) => k + 1) 
+    setFormKey((k) => k + 1)
   }
 
   const enviarContacto = (e) => {

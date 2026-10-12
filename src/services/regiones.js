@@ -1,5 +1,3 @@
-
-
 export const REGIONES_URL = `${import.meta.env.BASE_URL}data/regiones.json`
 
 export function comunasDeRegion(regiones, codigo) {

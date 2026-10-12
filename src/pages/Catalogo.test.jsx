@@ -42,7 +42,7 @@ describe('Catálogo y carrito (HU-01)', () => {
   it('no deja superar el stock', async () => {
     const user = userEvent.setup()
     renderAt('/catalogo')
-    const cantidad = screen.getByLabelText('Cantidad de Gas 45Kg') 
+    const cantidad = screen.getByLabelText('Cantidad de Gas 45Kg')
     await user.clear(cantidad)
     await user.type(cantidad, '3')
     await user.click(within(tarjeta('Gas 45Kg')).getByRole('button', { name: 'Agregar al carrito' }))

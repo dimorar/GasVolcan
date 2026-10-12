@@ -23,7 +23,7 @@ describe('RUN', () => {
   })
 
   it('rechaza RUN con dígito incorrecto o formato inválido', () => {
-    expect(validarRut('12345678-K')).toBe(false) 
+    expect(validarRut('12345678-K')).toBe(false)
     expect(validarRut('abc')).toBe(false)
     expect(validarRut('')).toBe(false)
   })
@@ -42,7 +42,7 @@ describe('correo', () => {
 
   it('rechaza dominios no permitidos o correos incompletos', () => {
     expect(validarCorreo('ana@hotmail.com')).toBe(false)
-    expect(validarCorreo('@duoc.cl')).toBe(false) 
+    expect(validarCorreo('@duoc.cl')).toBe(false)
     expect(validarCorreo('ana@falso-duoc.cl')).toBe(false)
     expect(validarCorreo()).toBe(false)
   })

@@ -31,7 +31,6 @@ export function validarUsuario(datos, usuarios = [], idEditando = null) {
   ) {
     errores.email = 'Ya existe un usuario con ese correo.'
   }
-  
   if (!(idEditando && !datos.password) && !validarPassword(datos.password)) {
     errores.password = 'La contraseña debe tener al menos 6 caracteres.'
   }

@@ -1,5 +1,3 @@
-
-
 export const PRODUCTOS_INICIALES = [
   { id: 'G-05', name: 'Gas 5Kg', price: 10500, stock: 15, stockCritico: 5, img: 'img/gas-5kg.svg' },
   { id: 'G-11', name: 'Gas 11Kg', price: 16800, stock: 3, stockCritico: 5, img: 'img/gas-11kg.svg' },

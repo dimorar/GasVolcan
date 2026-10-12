@@ -2,7 +2,6 @@ import { screen, within } from '@testing-library/react'
 
 export async function llenarUsuario(user, { rut, nombre, email, password, region = 'RM', comuna = 'Macul' }) {
   await screen.findByRole('option', { name: 'Región Metropolitana' })
-  
   const form = within(screen.getByLabelText('RUN').closest('form'))
   for (const [label, valor] of [['RUN', rut], ['Nombre completo', nombre], ['Correo', email]]) {
     const input = form.getByLabelText(label)

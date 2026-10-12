@@ -5,7 +5,7 @@ import { eliminarUsuario, guardarUsuario, validarUsuario } from '../../services/
 
 export default function Usuarios() {
   const { usuarios, setUsuarios, sesion } = useStore()
-  const [editando, setEditando] = useState(null) 
+  const [editando, setEditando] = useState(null)
   const [errores, setErrores] = useState({})
   const [mensaje, setMensaje] = useState(null)
 

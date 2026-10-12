@@ -8,7 +8,6 @@ export default function UserForm({ inicial = VACIO, errores = {}, textoBoton, on
   const [datos, setDatos] = useState({ ...VACIO, ...inicial, password: '' })
   const { data: regiones, error, loading } = useFetch(REGIONES_URL)
   const uid = useId()
-
   const errorDe = (name) =>
     errores[name] ? { 'aria-invalid': true, 'aria-describedby': `${uid}-${name}` } : {}
   const mensajeError = (name) =>
@@ -16,7 +15,6 @@ export default function UserForm({ inicial = VACIO, errores = {}, textoBoton, on
 
   const cambiar = (e) => {
     const { name, value } = e.target
-    
     setDatos((d) => ({ ...d, [name]: value, ...(name === 'region' ? { comuna: '' } : {}) }))
   }
 
